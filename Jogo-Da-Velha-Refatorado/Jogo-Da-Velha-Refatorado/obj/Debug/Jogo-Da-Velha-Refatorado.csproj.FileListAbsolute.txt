@@ -1,0 +1,7 @@
+C:\git\jogo-da-velha-2\Jogo-Da-Velha-Refatorado\Jogo-Da-Velha-Refatorado\bin\Debug\Jogo-Da-Velha-Refatorado.exe.config
+C:\git\jogo-da-velha-2\Jogo-Da-Velha-Refatorado\Jogo-Da-Velha-Refatorado\bin\Debug\Jogo-Da-Velha-Refatorado.exe
+C:\git\jogo-da-velha-2\Jogo-Da-Velha-Refatorado\Jogo-Da-Velha-Refatorado\bin\Debug\Jogo-Da-Velha-Refatorado.pdb
+C:\git\jogo-da-velha-2\Jogo-Da-Velha-Refatorado\Jogo-Da-Velha-Refatorado\obj\Debug\Jogo-Da-Velha-Refatorado.csprojAssemblyReference.cache
+C:\git\jogo-da-velha-2\Jogo-Da-Velha-Refatorado\Jogo-Da-Velha-Refatorado\obj\Debug\Jogo-Da-Velha-Refatorado.csproj.CoreCompileInputs.cache
+C:\git\jogo-da-velha-2\Jogo-Da-Velha-Refatorado\Jogo-Da-Velha-Refatorado\obj\Debug\Jogo-Da-Velha-Refatorado.exe
+C:\git\jogo-da-velha-2\Jogo-Da-Velha-Refatorado\Jogo-Da-Velha-Refatorado\obj\Debug\Jogo-Da-Velha-Refatorado.pdb
