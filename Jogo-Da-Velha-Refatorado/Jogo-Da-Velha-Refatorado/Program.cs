@@ -24,8 +24,13 @@ namespace Jogo_Da_Velha_Refatorado
 
 			do
 			{
+				//Limpar console
+				Console.Clear();
+				Console.WriteLine("Jogo da velha\n");
+				Console.WriteLine("Partida em andamento ");
 				//imprimir tabuleiro
 				imprimirJogo(board);
+				Console.WriteLine("");
 				//controlar de qual jogador é a vez
 				currentPlayer = playerControl(countPlayer);
 				//ler dados da posição da jogada
@@ -42,23 +47,30 @@ namespace Jogo_Da_Velha_Refatorado
 					{
 						//verificarStatusDeVitoriaOuDerrota
 						matchResult = verifyVictoryOrDefeat(board);
-						if (matchResult > 0) 
+						if (matchResult > 0)
+						{
 							//printar vitória do jogador atual (que vem do matchResult);
-							Console.WriteLine("\n\nO jogador {0} venceu !!!!!!!", currentPlayer);
+							Console.Clear();
+							Console.WriteLine("O jogador {0} venceu !!!!!!!\n\n", currentPlayer);
+						}
 						//Se não VitoriaOuDerrota E jogada == 9
 						else
 							if (countPlayer == 9)
+							{
 								//Jogo terminou em empate
-								Console.WriteLine("Jogo terminou em empate !!!!"); ;
+								Console.Clear();
+								Console.WriteLine("Jogo terminou em empate !!!!\n\n");
+							}
 					}
 					//incrementar contador da jogada
 					countPlayer++;
-					Console.Clear();
 				}
 				//Se dados não ok
 				//reiniciar jogada
 			} while (matchResult == 0 && countPlayer <= 9);
 
+			Console.WriteLine("Partida Finalizada ");
+			Console.WriteLine("Tabuleiro final");
 			imprimirJogo(board);
 			Console.ReadKey();
 		}
@@ -117,8 +129,9 @@ namespace Jogo_Da_Velha_Refatorado
 				return true;
 			else
 			{
-				Console.Clear();
-				Console.WriteLine("Você digitou algo diferente de um númeor inteiro !!!");
+				Console.WriteLine("\nVocê digitou algo diferente de um número inteiro !!!");
+				Console.Write("\nPrecione qualquer tecla para fazer uma nova leitura da posição.");
+				Console.ReadKey();
 				return false;
 			}
 		}
@@ -127,8 +140,9 @@ namespace Jogo_Da_Velha_Refatorado
 		{
 			if (choiceLine < 0 || choiceLine > 2 || choiceColumn < 0 || choiceColumn > 2)
 			{
-				Console.Clear();
 				Console.WriteLine("Você digitou uma posição inexistente !!!");
+				Console.Write("\nPrecione qualquer tecla para fazer uma nova leitura da posição.");
+				Console.ReadKey();
 				return false;
 			}
 			else
@@ -137,8 +151,9 @@ namespace Jogo_Da_Velha_Refatorado
 					return true;
 				else
 				{
-					Console.Clear();
 					Console.WriteLine("A posição já foi preenchida !!!");
+					Console.Write("\nPrecione qualquer tecla para fazer uma nova leitura da posição.");
+					Console.ReadKey();
 					return false;
 				}
 			}
