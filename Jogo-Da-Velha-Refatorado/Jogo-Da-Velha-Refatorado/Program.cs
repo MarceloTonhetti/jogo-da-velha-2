@@ -15,7 +15,7 @@ namespace Jogo_Da_Velha_Refatorado
 			int[,] board = new int[line, column], auxBoard = new int[line, column];
 
 			int choiceLine = 0, choiceColumn = 0;
-			int matchResult;
+			int matchResult = 0;
 			int countPlayer = 1;
 			int currentPlayer;
 
@@ -41,26 +41,25 @@ namespace Jogo_Da_Velha_Refatorado
 					if (countPlayer >= 5)
 					{
 						//verificarStatusDeVitoriaOuDerrota
-						matchResult = verifyVictoryOrDefeat();
-						if (matchResult > 0) ;
-						//printar vitória do jogador atual (que vem do matchResult);
+						matchResult = verifyVictoryOrDefeat(board);
+						if (matchResult > 0) 
+							//printar vitória do jogador atual (que vem do matchResult);
+							Console.WriteLine("\n\nO jogador {0} venceu !!!!!!!", currentPlayer);
 						//Se não VitoriaOuDerrota E jogada == 9
 						else
-							if (countPlayer == 9) ;
-						//Jogo terminou em empate
-						//incrementar contador da jogada
-						countPlayer++;
+							if (countPlayer == 9)
+								//Jogo terminou em empate
+								Console.WriteLine("Jogo terminou em empate !!!!"); ;
 					}
+					//incrementar contador da jogada
+					countPlayer++;
+					Console.Clear();
 				}
 				//Se dados não ok
-				else
-				{
-					//Limpar console
-					//reiniciar jogada
-				}
-				
-			} while (true);
+				//reiniciar jogada
+			} while (matchResult == 0 && countPlayer <= 9);
 
+			imprimirJogo(board);
 			Console.ReadKey();
 		}
 
@@ -117,13 +116,18 @@ namespace Jogo_Da_Velha_Refatorado
 			if (int.TryParse(x, out choiceLine) && (int.TryParse(y, out choiceColumn)))
 				return true;
 			else
+			{
+				Console.Clear();
+				Console.WriteLine("Você digitou algo diferente de um númeor inteiro !!!");
 				return false;
+			}
 		}
 
 		static bool validatePosition(int[,] board, int choiceLine, int choiceColumn)
 		{
 			if (choiceLine < 0 || choiceLine > 2 || choiceColumn < 0 || choiceColumn > 2)
 			{
+				Console.Clear();
 				Console.WriteLine("Você digitou uma posição inexistente !!!");
 				return false;
 			}
@@ -133,6 +137,7 @@ namespace Jogo_Da_Velha_Refatorado
 					return true;
 				else
 				{
+					Console.Clear();
 					Console.WriteLine("A posição já foi preenchida !!!");
 					return false;
 				}
@@ -147,8 +152,65 @@ namespace Jogo_Da_Velha_Refatorado
 			board[choiceLine, choiceColumn] = currentPlayer;
 		}
 
-		static int verifyVictoryOrDefeat()
+		static int verifyVictoryOrDefeat(int[,] board)
 		{
+			int sum = 0;
+
+			//Verificar linha:
+			for (int line = 0; line < board.GetLength(0); line++)
+			{
+				sum = 0;
+				for (int colunm = 0; colunm < board.GetLength(1); colunm++)
+				{
+					sum += board[line, colunm];
+				}
+
+				if (sum == 3)
+					return 1;
+				else
+					if (sum == 12)
+					return 2;
+			}
+
+			//Verificar coluna:
+			for (int colunm = 0; colunm < board.GetLength(0); colunm++)
+			{
+				sum = 0;
+				for (int line = 0; line < board.GetLength(1); line++)
+				{
+					sum += board[line, colunm];
+				}
+
+				if (sum == 3)
+					return 1;
+				else
+					if (sum == 12)
+					return 2;
+			}
+
+			//Verificar diagonal principal:
+			sum = 0;
+			for (int line = 0; line < board.GetLength(0); line++)
+			{
+				sum += board[line, line];
+			}
+			if (sum == 3)
+				return 1;
+			else if (sum == 12)
+				return 2;
+
+			//Verificar diagonal secundária:
+			sum = 0;
+			for (int line = 0, colunm = 2; line < board.GetLength(0); line++, colunm--)
+			{
+				sum += board[line, colunm];
+			}
+			if (sum == 3)
+				return 1;
+			else if (sum == 12)
+				return 2;
+
+			//Retorno padrão (empate)
 			return 0;
 		}
 	}
