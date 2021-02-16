@@ -10,63 +10,44 @@ namespace Jogo_Da_Velha_Refatorado
 	{
 		static void Main(string[] args)
 		{
-			//declarar as variáveis
-			const int line = 3, column = 3;
-			int[,] board = new int[line, column], auxBoard = new int[line, column];
-
+			int[,] board = new int[3, 3];
 			int choiceLine = 0, choiceColumn = 0;
 			int matchResult = 0;
 			int countPlayer = 1;
 			int currentPlayer;
 
-			//exibir tutorial
 			tutorial();
 
 			do
 			{
-				//Limpar console
 				Console.Clear();
 				Console.WriteLine("Jogo da velha\n");
 				Console.WriteLine("Partida em andamento ");
-				//imprimir tabuleiro
 				imprimirJogo(board);
 				Console.WriteLine("");
-				//controlar de qual jogador é a vez
-				currentPlayer = playerControl(countPlayer);
-				//ler dados da posição da jogada
 
-				
-				//validar dados da jogada
-				//Se dados ok
+				currentPlayer = playerControl(countPlayer);
+
 				if (readPosition(ref choiceLine, ref choiceColumn, currentPlayer) && validatePosition(board, choiceLine, choiceColumn))
 				{
-					//realizar jogada
 					makeMove(board, choiceLine, choiceColumn, currentPlayer);
-					//Se estiver na jogada >= 5
 					if (countPlayer >= 5)
 					{
-						//verificarStatusDeVitoriaOuDerrota
 						matchResult = verifyVictoryOrDefeat(board);
 						if (matchResult > 0)
 						{
-							//printar vitória do jogador atual (que vem do matchResult);
 							Console.Clear();
 							Console.WriteLine("O jogador {0} venceu !!!!!!!\n\n", currentPlayer);
 						}
-						//Se não VitoriaOuDerrota E jogada == 9
 						else
 							if (countPlayer == 9)
 							{
-								//Jogo terminou em empate
 								Console.Clear();
 								Console.WriteLine("Jogo terminou em empate !!!!\n\n");
 							}
 					}
-					//incrementar contador da jogada
 					countPlayer++;
 				}
-				//Se dados não ok
-				//reiniciar jogada
 			} while (matchResult == 0 && countPlayer <= 9);
 
 			Console.WriteLine("Partida Finalizada ");
