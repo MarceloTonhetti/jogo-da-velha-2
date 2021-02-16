@@ -23,7 +23,7 @@ namespace Jogo_Da_Velha_Refatorado
 				Console.Clear();
 				Console.WriteLine("Jogo da velha\n");
 				Console.WriteLine("Partida em andamento ");
-				imprimirJogo(board);
+				printBoard(board);
 				Console.WriteLine("");
 
 				currentPlayer = playerControl(countPlayer);
@@ -52,7 +52,7 @@ namespace Jogo_Da_Velha_Refatorado
 
 			Console.WriteLine("Partida Finalizada ");
 			Console.WriteLine("\nTabuleiro final");
-			imprimirJogo(board);
+			printBoard(board);
 			Console.ReadKey();
 		}
 
@@ -79,7 +79,7 @@ namespace Jogo_Da_Velha_Refatorado
 			Console.ReadKey();
 		}
 
-		static void imprimirJogo(int[,] board)
+		static void printBoard(int[,] board)
 		{
 			char[,] auxBoard = new char[board.GetLength(0), board.GetLength(1)];
 
