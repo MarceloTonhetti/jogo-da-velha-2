@@ -70,13 +70,32 @@ namespace Jogo_Da_Velha_Refatorado
 			} while (matchResult == 0 && countPlayer <= 9);
 
 			Console.WriteLine("Partida Finalizada ");
-			Console.WriteLine("Tabuleiro final");
+			Console.WriteLine("\nTabuleiro final");
 			imprimirJogo(board);
 			Console.ReadKey();
 		}
 
 		static void tutorial()
 		{
+			Console.WriteLine("---x---x---x---x--- Tutorial Rápido ---x---x---x---x---");
+			Console.WriteLine("\nRepresentação do Jogador 1: X");
+			Console.WriteLine("Representação do Jogador 2: O");
+			Console.WriteLine("\nPara realizar uma jogada voce deve informar o valor da linha e da coluna");
+			Console.WriteLine("Exemplo de jogada do jogador 1\n");
+			Console.WriteLine("Escolha uma linha: 1");
+			Console.WriteLine("Escolha uma coluna: 1");
+			Console.WriteLine("\nTabuleiro apos a jogada:\n");
+
+			Console.WriteLine("     0   1   2  COLUNAS\n");
+			Console.WriteLine("0    - | - | -");
+			Console.WriteLine("    ------------");
+			Console.WriteLine("1    - | X | -");
+			Console.WriteLine("    ------------");
+			Console.WriteLine("2    - | - | -");
+			Console.WriteLine("\nL\nI\nN\nH\nA\nS\n\n");
+
+			Console.Write("Pressione qualquer tecla para iniciar o jogo...");
+			Console.ReadKey();
 		}
 
 		static void imprimirJogo(int[,] board)
